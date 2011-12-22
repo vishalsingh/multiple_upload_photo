@@ -1,0 +1,42 @@
+<% title "User" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Number of album:</strong>
+  <%= @user.count_album %>
+</p>
+
+<hr/>
+
+<h2>User Album</h2>
+<p>
+      
+ <% @user.albums.each do |album|  %>
+      
+     <p>
+         <strong>Album Name(<%= album.photos.count %> photo):</strong>
+         <%= album.album_name %>&nbsp;
+         <%= link_to "Destroy", album, :confirm => 'Are you sure?', :method => :delete %><br/><br/>
+       
+	     <% album.photos.each do |p| %>
+       	         <%= link_to image_tag(p.photo.url(:thumb)), p.photo.url(:original) %>
+		<p>
+		  <strong>Tag(<%= p.tags.count %>):</strong>
+		 <%= p.tags.map { |t| t.tag_name }.join(", ")%>
+		</p>
+	     <% end %>
+
+  <% end %>
+     </p>
+
+<p>
+  <%= link_to "Add New Album", new_user_album_path(@user) %>
+</p>

@@ -1,0 +1,20 @@
+<% title "Album" %>
+
+<p>
+  <h3><strong>Album Name:</strong></h3
+  <%= @album.album_name %>
+</p>
+<p>
+<% @album.photos.each do |photo| %>
+ <%= image_tag photo.photo.url(:thumb) %>
+       <p>
+		  <strong>Tag:</strong>
+		 <%= photo.tags.map { |t| t.tag_name }.join(", ")%>
+		</p>
+      
+    
+<% end %>
+
+<p>
+  <%= link_to "Back to home", root_path %>
+</p>

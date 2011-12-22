@@ -1,0 +1,7 @@
+one:
+  album_name: MyString
+  user_id: 1
+
+two:
+  album_name: MyString
+  user_id: 1

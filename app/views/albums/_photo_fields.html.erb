@@ -1,0 +1,10 @@
+<div class="fields">
+  <p>
+     <%= f.file_field :photo %><br />
+    <%= link_to_remove_fields "remove", f %>
+  </p>
+  <%= f.fields_for :tags do |builder| %>
+    <%= render 'tag_fields', :f => builder %>
+  <% end %>
+  <p><%= link_to_add_fields "Add Tag", f, :tags %></p>
+</div>

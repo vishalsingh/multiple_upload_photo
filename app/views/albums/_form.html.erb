@@ -1,0 +1,12 @@
+<%= form_for ([@user, @user.albums.build]) , :html => { :multipart => true }  do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :album_name %><br />
+    <%= f.text_field :album_name %>
+  </p>
+  <%= f.fields_for :photos do |builder| %>
+    <%= render "photo_fields", :f => builder %>
+  <% end %>
+  <p><%= link_to_add_fields "Add More Photo", f, :photos %></p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
